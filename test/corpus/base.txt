@@ -264,13 +264,16 @@ map_variable = {
         (identifier)
         (value
           (map
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))))))
 
@@ -289,10 +292,12 @@ object_variable = {
         (identifier)
         (value
           (map
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))))))
 
@@ -606,13 +611,16 @@ commonAnnotations = {
         (identifier)
         (value
           (map
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal)))))
       (block
@@ -623,13 +631,16 @@ commonAnnotations = {
         (identifier)
         (value
           (map
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))
-            (identifier)
+            (quoted_identifier
+            (identifier))
             (value
               (string_literal))))))
 
@@ -734,4 +745,43 @@ enable_cilium_network_policies = false
         (identifier)
         (value
           (false))))
+
+==================
+rfvars sample #6
+==================
+
+dogs = [
+   {
+      name  = "Sparky",
+      breed = "poodle"
+   },
+   {
+      name  = "Fluffy",
+      breed = "chihuahua"
+   }
+]
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (tuple
+            (value
+              (map
+                (identifier)
+                (value
+                  (string_literal))
+                (identifier)
+                (value
+                  (string_literal))))
+            (value
+              (map
+                (identifier)
+                (value
+                  (string_literal))
+                (identifier)
+                (value
+                  (string_literal))))))))
 

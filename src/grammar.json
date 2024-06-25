@@ -126,7 +126,7 @@
         ]
       }
     },
-    "_quoted_identifier": {
+    "quoted_identifier": {
       "type": "SEQ",
       "members": [
         {
@@ -300,7 +300,7 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "_quoted_identifier"
+                    "name": "quoted_identifier"
                   }
                 ]
               },

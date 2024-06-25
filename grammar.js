@@ -24,7 +24,7 @@ module.exports = grammar({
     null: ($) => "null",
     identifier: ($) =>
       token(seq(letter, repeat(choice(letter, unicodeDigit, "-")))),
-    _quoted_identifier: ($) => seq('"', $.identifier, '"'),
+    quoted_identifier: ($) => seq('"', $.identifier, '"'),
     value: ($) =>
       choice(
         $.string_literal,
@@ -55,7 +55,7 @@ module.exports = grammar({
         choice($._newline),
         repeat(
           seq(
-            choice($.identifier, $._quoted_identifier),
+            choice($.identifier, $.quoted_identifier),
             choice("=", ":"),
             $.value,
             seq(optional(/,/), choice($._newline)),

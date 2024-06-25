@@ -41,7 +41,11 @@
   "tree-sitter": [
     {
       "scope": "source.tfvars",
-      "injection-regex": "^tfvars$"
+      "file-types": [
+        "tfvars",
+        "tfvars.sample",
+        "tfvars.example"
+      ]
     }
   ]
 }
