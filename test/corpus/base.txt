@@ -26,6 +26,276 @@ variable = "value"
         (value
             (string_literal))))
 
+
+==================
+# String Variable
+==================
+
+string_variable = "Hello, Terraform!"
+
+---
+
+(source_file
+    (block
+        (identifier)
+        (value
+            (string_literal))))
+
+==================
+# Numeric Variables
+==================
+integer_variable = 42
+float_variable = 3.14
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (numeric_literal)))
+      (block
+        (identifier)
+        (value
+          (numeric_literal))))
+
+==================
+# Boolean Variable
+==================
+boolean_variable = true
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (true))))
+
+==================
+# List Variable
+==================
+list_variable = ["item1", "item2", "item3"]
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (tuple
+            (value
+              (string_literal))
+            (value
+              (string_literal))
+            (value
+              (string_literal))))))
+
+==================
+# Map Variable
+==================
+map_variable = {
+  key1 = "value1"
+  key2 = "value2"
+}
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (map
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal))))))
+
+==================
+# Set Variable (Introduced in Terraform 0.14)
+==================
+set_variable = ["itemA", "itemB", "itemC"]
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (tuple
+            (value
+              (string_literal))
+            (value
+              (string_literal))
+            (value
+              (string_literal))))))
+
+==================
+# Tuple Variable (Introduced in Terraform 0.12)
+==================
+tuple_variable = ["value1", 42, true]
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (tuple
+            (value
+              (string_literal))
+            (value
+              (numeric_literal))
+            (value
+              (true))))))
+
+==================
+# Object (Complex Type) Variable
+==================
+object_variable = {
+  name = "John Doe"
+  age = 30
+  is_employee = true
+}
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (map
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (numeric_literal))
+            (identifier)
+            (value
+              (true))))))
+
+==================
+# Optional Variable (for conditional use)
+==================
+optional_variable = null
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (null))))
+
+==================
+# string variable
+==================
+string_variable = "This is a string variable."
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (string_literal))))
+
+==================
+# number variable
+==================
+number_variable = 1234567890.123456
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (numeric_literal))))
+
+==================
+# bool variable
+==================
+bool_variable = true
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (true))))
+
+==================
+# list variable
+==================
+list_variable = ["one", "two", "three"]
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (tuple
+            (value
+              (string_literal))
+            (value
+              (string_literal))
+            (value
+              (string_literal))))))
+
+==================
+# map variable
+==================
+map_variable = {
+  "key1": "value1",
+  "key2": "value2",
+  "key3": "value3"
+}
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (map
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal))))))
+
+==================
+# object variable
+==================
+object_variable = {
+  "name": "My object variable",
+  "description": "This is a description of my object variable."
+}
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (map
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal))))))
+
 ==================
 tfvars sample
 ==================
@@ -133,3 +403,335 @@ domain_name = "CHANGE_ME"
         (identifier)
         (value
           (string_literal))))
+
+
+==================
+tfvars sample #3
+==================
+
+// This file shows a sample input variable definitions file for the connector module.
+// The input values shown here are not meant to be used as is directly.
+
+project_id = "my-project"
+
+connector_map = {
+  c1 : {
+    impersonating_account_email : "connector-admin@myorg.com",
+    description : "Connector 1 for BCE Applink",
+    // String key-value pairs.
+    additional_metadata : {
+      // Example samples.
+      location : "dc-1-virginia",
+      key2 : "value2"
+    }
+  },
+}
+
+---
+
+    (source_file
+      (comment)
+      (comment)
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (map
+            (identifier)
+            (value
+              (map
+                (identifier)
+                (value
+                  (string_literal))
+                (identifier)
+                (value
+                  (string_literal))
+                (comment)
+                (identifier)
+                (value
+                  (map
+                    (comment)
+                    (identifier)
+                    (value
+                      (string_literal))
+                    (identifier)
+                    (value
+                      (string_literal))))))))))
+
+
+==================
+tfvars sample #4
+==================
+
+// This file shows a sample input variable definitions file for the single-app setup.
+// The input values shown here are not meant to be used as is directly.
+
+project_id = "my-project"
+
+app_name = "myapp"
+
+app_endpoint = "10.128.0.15:80"
+
+dns_name = "myapp.myorg.com."
+
+backend_service_protocol = "HTTP"
+
+// Can be obtained using `gcloud alpha iap oauth-brands list --format="value(name)"`
+iap_brand_name = "projects/XXXXXXXXXXXX/brands/XXXXXXXXXXXX"
+
+connector_info = {
+  // Use output from connector module
+  // Example:
+  /*
+  "c1" = {
+    "config_url" = "https://www.googleapis.com/storage/v1/b/647538708490-connector-c1/o/config%2Finit-config.yaml"
+    "service_account_email" = "connector-c1-sa@my-project.iam.gserviceaccount.com"
+    "service_account_id" = "projects/my-project/serviceAccounts/connector-c1-sa@my-project.iam.gserviceaccount.com"
+  }
+  */
+}
+
+---
+
+    (source_file
+      (comment)
+      (comment)
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (comment)
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (map
+            (comment)
+            (comment)
+            (comment)))))
+
+
+==================
+tfvars sample #5
+==================
+
+env = "test"
+
+secret_path = "secret/thanos/test/aws"
+
+thanos_values_file = "values/values-test.yaml"
+
+namespace = "default"
+
+bucket_name = "vitfor-test-thanos-bucket"
+
+bucket_key = "thanos/test.tfstate"
+
+region = "eu-west-2"
+
+tf_state_bucket = "vitfor-test-terraform-state"
+
+tags = {
+  "Service" = "Dan"
+  "Team" = "Dans Team"
+  "Environment" = "Test"
+}
+
+vault_address = "http://127.0.0.1:8200/"
+
+commonAnnotations = {
+    "anotribe" = "dan"
+    "anodomain" = "my_ano_domain"
+    "anosquad" = "dan_squad_ano"
+  }
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (map
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal)))))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (map
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal))
+            (identifier)
+            (value
+              (string_literal))))))
+
+
+==================
+rfvars sample #6
+==================
+
+namespace   = "default"
+kubecontext = "minikube"
+kubeconfig  = "~/.kube/config"
+
+# Vault
+vault-license = ""
+
+
+vault_helm_release_name = "vault"
+vault_service_name      = "vault-internal"
+
+cluster_name = "cluster.local"
+
+prometheus-vault-access-token = ""
+
+
+organizationName       = "TestOrg"
+organizationalUnitName = "Devops"
+commonName             = "vault-internal.svc.cluster.local"
+additionalDomains      = ["vault.cluster.local", "vault.playground.lab", "vault.default.svc.cluster.local", "vault-0.vault-internal", "vault-1.vault-internal", "vault-2.vault-internal"]
+
+enable_kubernetes_network_policies = true
+enable_cilium_network_policies = false
+
+---
+
+    (source_file
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (comment)
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (tuple
+            (value
+              (string_literal))
+            (value
+              (string_literal))
+            (value
+              (string_literal))
+            (value
+              (string_literal))
+            (value
+              (string_literal))
+            (value
+              (string_literal)))))
+      (block
+        (identifier)
+        (value
+          (true)))
+      (block
+        (identifier)
+        (value
+          (false))))
+

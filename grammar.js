@@ -21,9 +21,48 @@ module.exports = grammar({
       ),
     true: ($) => "true",
     false: ($) => "false",
+    null: ($) => "null",
     identifier: ($) =>
       token(seq(letter, repeat(choice(letter, unicodeDigit, "-")))),
-    value: ($) => choice($.string_literal, $.true, $.false, $.numeric_literal),
+    _quoted_identifier: ($) => seq('"', $.identifier, '"'),
+    value: ($) =>
+      choice(
+        $.string_literal,
+        $.true,
+        $.false,
+        $.null,
+        $.numeric_literal,
+        $.map,
+        $.tuple,
+      ),
+    tuple: ($) =>
+      seq(
+        "[",
+        optional($._newline),
+        optional(
+          seq(
+            $.value,
+            repeat(seq(",", optional($._newline), $.value)),
+            optional(","),
+          ),
+        ),
+        optional($._newline),
+        "]",
+      ),
+    map: ($) =>
+      seq(
+        "{",
+        choice($._newline),
+        repeat(
+          seq(
+            choice($.identifier, $._quoted_identifier),
+            choice("=", ":"),
+            $.value,
+            seq(optional(/,/), choice($._newline)),
+          ),
+        ),
+        "}",
+      ),
     block: ($) => seq($.identifier, "=", $.value, choice($._newline)),
     string_literal: ($) => token(seq('"', repeat(/[^"]|(\\\")/), '"')),
     numeric_literal: ($) =>

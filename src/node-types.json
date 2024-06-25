@@ -19,6 +19,25 @@
     }
   },
   {
+    "type": "map",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -28,6 +47,21 @@
       "types": [
         {
           "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "value",
           "named": true
         }
       ]
@@ -46,6 +80,14 @@
           "named": true
         },
         {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
           "type": "numeric_literal",
           "named": true
         },
@@ -56,12 +98,36 @@
         {
           "type": "true",
           "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
         }
       ]
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
@@ -77,6 +143,10 @@
     "named": true
   },
   {
+    "type": "null",
+    "named": true
+  },
+  {
     "type": "numeric_literal",
     "named": true
   },
@@ -87,5 +157,13 @@
   {
     "type": "true",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]
