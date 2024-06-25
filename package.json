@@ -16,7 +16,8 @@
     "generate": "tree-sitter generate",
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip",
-    "test": "tree-sitter generate && tree-sitter test"
+    "test": "tree-sitter generate && tree-sitter test",
+    "parse": "tree-sitter generate && tree-sitter parse ./test/sample.tfvars"
   },
   "dependencies": {
     "node-gyp-build": "^4.8.1"

@@ -1,9 +1,135 @@
 ==================
-Test
+comments sample
 ==================
 
-hello
+// It's a comment
 
 ---
 
-(source_file)
+(source_file
+    (comment))
+
+
+==================
+single sample
+==================
+
+// Comment
+variable = "value"
+
+---
+
+(source_file
+    (comment)
+    (block
+        (identifier)
+        (value
+            (string_literal))))
+
+==================
+tfvars sample
+==================
+
+// Project
+region = "your region"
+
+// AWS
+aws_access_key_id     = "your access key id"
+aws_secret_access_key = "your secret access key"
+
+//To Deploy on Google
+project_id = "Your google project ID"
+region  = "your region"
+bucket_name = "your given bucket name"
+bucket_location = "location of the bucket US, EU etc.."
+
+---
+
+(source_file
+    (comment)
+    (block
+        (identifier)
+        (value
+          (string_literal)))
+    (comment)
+    (block
+        (identifier)
+        (value
+          (string_literal)))
+    (block
+        (identifier)
+        (value
+          (string_literal)))
+    (comment)
+    (block
+        (identifier)
+        (value
+          (string_literal)))
+    (block
+        (identifier)
+        (value
+          (string_literal)))
+    (block
+        (identifier)
+        (value
+          (string_literal)))
+    (block
+        (identifier)
+        (value
+          (string_literal))))
+
+
+==================
+tfvars sample #2
+==================
+
+# https://slugs.do-api.dev/
+
+# s-1vcpu-512mb-10gb  $4    10GB
+# s-1vcpu-1gb         $6    25GB
+# s-1vcpu-2gb         $12   50GB
+# s-2vcpu-2gb         $18   60GB
+# s-2vcpu-4gb         $24   80GB
+# s-4vcpu-8gb         $48   160GB
+
+region = "sfo2"
+droplet_count = 1
+droplet_size = "s-2vcpu-4gb"
+ssh_key = "CHANGE_ME"
+subdomain = "minimal-vpc"
+domain_name = "CHANGE_ME"
+
+---
+
+    (source_file
+      (comment)
+      (comment)
+      (comment)
+      (comment)
+      (comment)
+      (comment)
+      (comment)
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (numeric_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal)))
+      (block
+        (identifier)
+        (value
+          (string_literal))))
