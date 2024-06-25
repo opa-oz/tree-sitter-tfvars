@@ -1,0 +1,46 @@
+{
+  "name": "tree-sitter-tfvars",
+  "version": "1.0.0",
+  "description": "TreeSitter support for *.tfvars files",
+  "main": "index.js",
+  "types": "bindings/node",
+  "repository": "git@github.com:opa-oz/tree-sitter-tfvars.git",
+  "author": "Vladimir Levin <opaozhub@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nan": "^2.20.0",
+    "prebuildify": "^6.0.0",
+    "tree-sitter-cli": "^0.22.6"
+  },
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip",
+    "test": "tree-sitter generate && tree-sitter test"
+  },
+  "dependencies": {
+    "node-gyp-build": "^4.8.1"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "tree-sitter": [
+    {
+      "scope": "source.tfvars",
+      "injection-regex": "^tfvars$"
+    }
+  ]
+}
